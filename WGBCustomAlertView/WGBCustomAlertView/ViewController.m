@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WGBCustomPopUpView.h"
+#import <objc/runtime.h>
 
 @interface ViewController ()
 @property (strong,nonatomic) WGBCustomPopUpView *popUpView ;
@@ -40,6 +41,11 @@
 	button.backgroundColor = [UIColor magentaColor];
 	[button setTitle:@"你放马过来啊!!!" forState:UIControlStateNormal];
 	[button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+		///利用runtime关联一个block
+	dispatch_block_t block = ^{
+		[popUpView dismiss];
+	};
+	objc_setAssociatedObject(self, @"BlockKey", block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 	popUpView.contentView = button;
 	popUpView.animationType = arc4random()%5;
 	[popUpView show];
@@ -72,7 +78,6 @@
 																			 context:nil].size;
 	CGFloat textHight = retSize.height;
 	remindLab.frame = CGRectMake(10, 40, viewCtrl.bounds.size.width - 20, textHight);
-
 	remindLab.text = title;
 	remindLab.numberOfLines = 0;
 	remindLab.textAlignment = NSTextAlignmentCenter;
@@ -89,8 +94,13 @@
 	[cancelButton setTitle:cancelTitle forState:UIControlStateNormal];
 	[cancelButton setTitleColor:[UIColor blueColor]  forState:UIControlStateNormal];
 	[cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-	cancelButton.layer.cornerRadius = 4;
+	///利用runtime关联一个block
+	dispatch_block_t block = ^{
+		[popUpView dismiss];
+	};
+	objc_setAssociatedObject(self, @"BlockKey", block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 
+	cancelButton.layer.cornerRadius = 4;
 	UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	confirmButton.titleLabel.font =  [UIFont systemFontOfSize:15];
 	confirmButton.frame = CGRectMake(viewCtrl.bounds.size.width - 20 - cancelButton.bounds.size.width, cancelButton.frame.origin.y, cancelButton.bounds.size.width, cancelButton.bounds.size.height);
@@ -108,7 +118,9 @@
 	[popUpView show];
 }
 - (void)dismiss{
-	[self.popUpView dismiss];
+//	取出block
+	dispatch_block_t  block  =  objc_getAssociatedObject(self, @"BlockKey");
+	!block? : block();
 }
 
 @end

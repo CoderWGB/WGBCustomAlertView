@@ -7,6 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 
+/// 暂时想到这点简陋的动画 后续拓展 持续更新吧~
 typedef NS_ENUM(NSInteger,WGBAlertAnimationType) {
 	WGBAlertAnimationTypeCenter = 0, //从中心弹出
 	WGBAlertAnimationTypeUp ,//从顶部弹出
