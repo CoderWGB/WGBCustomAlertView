@@ -19,18 +19,23 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	self.view.backgroundColor = [UIColor orangeColor];
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	button.frame = CGRectMake(100, 100, 100, 30);
+	[button setTitle:@"点我啊!!!" forState:UIControlStateNormal];
+	button.backgroundColor = [UIColor whiteColor];
+	[self.view addSubview: button];
+	[button addTarget:self action:@selector(testDemo) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)viewDidLayoutSubviews{
 	[super viewDidLayoutSubviews];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)testDemo{
 	[self showDemo];
-//	[self wgbStyle_alertWithTitle:@"提示" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" cancelAction:^{
-//	} comfirmAction:^{
-//	}];
+		//	[self wgbStyle_alertWithTitle:@"提示" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" cancelAction:^{
+		//	} comfirmAction:^{
+		//	}];
 }
-
 
 #pragma mark- Demo
 - (void)showDemo{
@@ -48,6 +53,7 @@
 	objc_setAssociatedObject(self, @"BlockKey", block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 	popUpView.contentView = button;
 	popUpView.animationType = arc4random()%5;
+	popUpView.touchDismiss = YES;
 	[popUpView show];
 }
 

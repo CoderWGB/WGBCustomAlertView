@@ -13,7 +13,7 @@
 #import "WGBCustomPopUpView.h"
 
 @interface WGBCustomPopUpView ()
-@property (strong,nonatomic) UIView *backgroundView ;
+
 @end
 
 @implementation WGBCustomPopUpView
@@ -32,9 +32,6 @@
 	if (self) {
 		/// 初始化配置
 		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45];
-		_backgroundView = [[UIView alloc] initWithFrame:self.frame];
-		_backgroundView.backgroundColor = [UIColor clearColor];
-		[self addSubview:_backgroundView];
 	}
 	return self;
 }
@@ -48,6 +45,19 @@
 	/// 设置动画弹出的类型 初始化内容视图的frame 根据不同类型作动画处理
 - (void)setAnimationType:(WGBAlertAnimationType)animationType{
 	_animationType = animationType;
+}
+
+- (void)setTouchDismiss:(BOOL)touchDismiss{
+	_touchDismiss = touchDismiss;
+	if (touchDismiss) {
+		self.userInteractionEnabled = YES;
+		UITapGestureRecognizer *tap = [ [UITapGestureRecognizer alloc]  initWithTarget:self action:@selector(touchDismissAction)];
+		[self addGestureRecognizer: tap];
+	}
+}
+
+- (void)touchDismissAction{
+	[self dismiss];
 }
 
 	///MARK:- 初始化内容视图的位置
@@ -110,7 +120,6 @@
 	[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
 		self.contentView.transform = CGAffineTransformMakeScale(0.1, 0.1);
 	} completion:^(BOOL finished) {
-		_contentView.hidden = YES;
 		[self removeFromSuperview];
 	}];
 }
@@ -160,7 +169,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 }
 
 - (void)dismiss{
-	[self hideAlertBackground]; //同步除去蒙版
 	/// 动画原则是操作contentView的frame
 	__block	CGFloat viewW  = self.contentView.width;
 	__block	CGFloat viewH = self.contentView.height;
@@ -173,7 +181,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 			[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
 				self.contentView.y = -viewH;
 			} completion:^(BOOL finished) {
-				_contentView.hidden = YES;
 				[self removeFromSuperview];
 			}];
 		}
@@ -182,7 +189,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 			[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
 				self.contentView.y = kHeight;
 			} completion:^(BOOL finished) {
-				_contentView.hidden = YES;
 				[self removeFromSuperview];
 			}];
 		}
@@ -191,7 +197,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 			[UIView animateWithDuration:kWGBAlertAnimationDuration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
 				self.contentView.x =  -viewW;
 			} completion:^(BOOL finished) {
-				_contentView.hidden = YES;
 				[self removeFromSuperview];
 			}];
 		}
@@ -200,7 +205,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 			[UIView animateWithDuration:kWGBAlertAnimationDuration delay:0 usingSpringWithDamping:0.75 initialSpringVelocity:0 options:(UIViewAnimationOptionLayoutSubviews) animations:^{
 				self.contentView.x = kWidth;
 			} completion:^(BOOL finished) {
-				_contentView.hidden = YES;
 				[self removeFromSuperview];
 			}];
 		}
@@ -217,25 +221,6 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
 	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45];
 	[window addSubview: self];
-
-	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-	animation.fromValue = @0;
-	animation.toValue = @1;
-	animation.duration = kWGBAlertAnimationDuration;
-	animation.removedOnCompletion =YES;
-	animation.fillMode = kCAFillModeForwards;
-	[self.backgroundView.layer addAnimation: animation forKey:nil];
-}
-
-/// 去除蒙版视图动画
-- (void)hideAlertBackground{
-	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-	animation.fromValue = @1;
-	animation.toValue = @0;
-	animation.duration = kWGBAlertAnimationDuration;
-	animation.removedOnCompletion =YES;
-	animation.fillMode = kCAFillModeForwards;
-	[self.backgroundView.layer addAnimation: animation forKey:nil];
 }
 
 @end

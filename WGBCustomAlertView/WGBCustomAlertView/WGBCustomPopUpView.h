@@ -21,6 +21,8 @@ typedef NS_ENUM(NSInteger,WGBAlertAnimationType) {
 @property (strong,nonatomic) UIView *contentView ;
 /// default is WGBAlertAnimationTypeCenter   弹出动画类型
 @property (assign,nonatomic) WGBAlertAnimationType  animationType;
+@property (assign,nonatomic) BOOL touchDismiss; //是否点击背景移除 默认否
+
 - (void)show; //弹
 - (void)dismiss;//消失
 @end
