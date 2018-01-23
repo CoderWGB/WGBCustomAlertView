@@ -13,6 +13,14 @@ end
 
 ```
 
+当然也要支持cocopods啦!
+
+```ruby
+
+pod 'WGBCustomAlertPopupView','~>0.0.1'
+
+```
+
 
 ## 三行代码 搞定一个弹窗 
 
