@@ -1,6 +1,18 @@
 # WGBCustomAlertView
 自定义弹窗视图
 
+支持pod私有库的引入
+
+```swift
+source "https://github.com/CoderWGB/WGBSpec.git" 
+#以上这句必须填写 不然找不到这个库是从哪里加载过来的
+platform :ios,'8.0'
+target "WGB_MyDemoApp" do 
+pod 'WGBCustomAlertPopupView','0.0.1'
+end
+
+```
+
 
 ## 三行代码 搞定一个弹窗 
 
