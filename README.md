@@ -52,80 +52,8 @@ pod 'WGBCustomAlertPopupView','~>0.0.1'
 
 ```
 
-### 自定义"骚"操作 定制个性化Style的弹窗
 
-```swift
-	#pragma mark- 大标题 左右俩按钮的wgbStyle风格弹窗
-- (void)wgbStyle_alertWithTitle:(NSString *)title
-							cancelButtonTitle:(NSString *)cancelTitle
-						 confirmButtonTitle:(NSString *)confirmTitle
-									 cancelAction:(void(^)(void))cancelCallBackBlock
-									comfirmAction:(void(^)(void))confirmCompeteBlock {
-	CGFloat kWidth = [UIScreen mainScreen].bounds.size.width;
-//	CGFloat kHeight = [UIScreen mainScreen].bounds.size.height;
-	WGBCustomPopUpView *popUpView = [[WGBCustomPopUpView alloc] init];
-	self.popUpView = popUpView;
-	UIView *viewCtrl = [[UIView alloc] init];
-	viewCtrl.backgroundColor = [UIColor whiteColor];
-	CGFloat rate = (320.0 - 56.0)/320.0;
-	CGFloat viewHeight = 178.0;
-	viewCtrl.frame = CGRectMake(0, 0, rate * kWidth, viewHeight);
-	viewCtrl.layer.cornerRadius = 4;
-
-	UILabel *remindLab = [[UILabel alloc] init];
-	NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18]};
-	CGSize retSize = [title boundingRectWithSize: CGSizeMake(viewCtrl.bounds.size.width - 20, HUGE) 	options:\
-										NSStringDrawingTruncatesLastVisibleLine |
-										NSStringDrawingUsesLineFragmentOrigin |
-										NSStringDrawingUsesFontLeading
-																		attributes:attribute
-																			 context:nil].size;
-	CGFloat textHight = retSize.height;
-	remindLab.frame = CGRectMake(10, 40, viewCtrl.bounds.size.width - 20, textHight);
-
-	remindLab.text = title;
-	remindLab.numberOfLines = 0;
-	remindLab.textAlignment = NSTextAlignmentCenter;
-	remindLab.font =  [UIFont boldSystemFontOfSize:18];
-	[viewCtrl addSubview:remindLab];
-
-	UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	cancelButton.titleLabel.font = [UIFont systemFontOfSize:15];
-	cancelButton.frame = CGRectMake(20, CGRectGetMaxY(remindLab.frame) + 40, (viewCtrl.bounds.size.width - 20 * 2 -10) / 2, 36);
-	cancelButton.backgroundColor = [UIColor clearColor];
-	cancelButton.layer.borderColor =[UIColor lightGrayColor].CGColor;
-	cancelButton.layer.borderWidth = 0.9;
-	[viewCtrl addSubview:cancelButton];
-	[cancelButton setTitle:cancelTitle forState:UIControlStateNormal];
-	[cancelButton setTitleColor:[UIColor blueColor]  forState:UIControlStateNormal];
-	[cancelButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];// cancelCallBackBlock
-	cancelButton.layer.cornerRadius = 4;
-
-	UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	confirmButton.titleLabel.font =  [UIFont systemFontOfSize:15];
-	confirmButton.frame = CGRectMake(viewCtrl.bounds.size.width - 20 - cancelButton.bounds.size.width, cancelButton.frame.origin.y, cancelButton.bounds.size.width, cancelButton.bounds.size.height);
-	confirmButton.backgroundColor = [UIColor purpleColor];
-	[confirmButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[confirmButton setTitle:confirmTitle forState:UIControlStateNormal];
-	confirmButton.layer.cornerRadius = 4;
-	[confirmButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside]; //confirmCompeteBlock
-	CGRect frame = viewCtrl.frame;
-	frame.size.height = CGRectGetMaxY(confirmButton.frame)+20;
-	viewCtrl.frame = frame;
-	[viewCtrl addSubview: confirmButton];
-	popUpView.animationType = WGBAlertAnimationTypeCenter;
-	popUpView.contentView = viewCtrl;
-	[popUpView show];
-}
-
-
-- (void)dismiss{
-	[self.popUpView dismiss];
-}
-
-```
-
-##### 以上, 结合Demo源码配合食用效果更佳哦😯
+##### 以上, 结合Demo源码配合食用效果更佳...
 
 
 
