@@ -1,5 +1,11 @@
 # WGBCustomAlertView
 
+[![CI Status](http://img.shields.io/travis/LiPengYue/PYToolBarScrollView.svg?style=flat)](https://travis-ci.org/LiPengYue/PYToolBarScrollView)
+[![Version](https://img.shields.io/cocoapods/v/PYToolBarScrollView.svg?style=flat)](http://cocoapods.org/pods/PYToolBarScrollView)
+[![License](https://img.shields.io/cocoapods/l/PYToolBarScrollView.svg?style=flat)](http://cocoapods.org/pods/PYToolBarScrollView)
+[![Platform](https://img.shields.io/cocoapods/p/PYToolBarScrollView.svg?style=flat)](http://cocoapods.org/pods/PYToolBarScrollView)
+
+
 [![CI Status](http://img.shields.io/travis/CoderWGB/WGBCustomAlertView.svg?style=flat)](https://travis-ci.org/CoderWGB/WGBCustomAlertView)
 [![Version](https://img.shields.io/cocoapods/v/WGBCustomAlertView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertView)
 [![License](https://img.shields.io/cocoapods/l/WGBCustomAlertView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertView)
