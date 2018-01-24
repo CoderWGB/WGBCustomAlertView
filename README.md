@@ -1,6 +1,5 @@
 # WGBCustomAlertView
 
-[![CI Status](http://img.shields.io/travis/WGBCustomAlertPopupView.svg?style=flat)](https://travis-ci.org/WGBCustomAlertPopupView)
 [![Version](https://img.shields.io/cocoapods/v/WGBCustomAlertPopupView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertPopupView)
 [![License](https://img.shields.io/cocoapods/l/WGBCustomAlertPopupView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertPopupView)
 [![Platform](https://img.shields.io/cocoapods/p/WGBCustomAlertPopupView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertPopupView)
