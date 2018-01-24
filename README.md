@@ -6,10 +6,6 @@
 [![Platform](https://img.shields.io/cocoapods/p/PYToolBarScrollView.svg?style=flat)](http://cocoapods.org/pods/PYToolBarScrollView)
 
 
-[![CI Status](http://img.shields.io/travis/CoderWGB/WGBCustomAlertView.svg?style=flat)](https://travis-ci.org/CoderWGB/WGBCustomAlertView)
-[![Version](https://img.shields.io/cocoapods/v/WGBCustomAlertView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertView)
-[![License](https://img.shields.io/cocoapods/l/WGBCustomAlertView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertView)
-[![Platform](https://img.shields.io/cocoapods/p/WGBCustomAlertView.svg?style=flat)](http://cocoapods.org/pods/WGBCustomAlertView)
 
 自定义弹窗视图
 
