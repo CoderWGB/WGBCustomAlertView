@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WGBCustomAlertPopupView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A common small tool with animation alert layer or View of WGBCustomAlertPopupView."
 
   # This description is used to generate tags and improve search results.
