@@ -41,19 +41,28 @@
 - (void)showDemo{
 	WGBCustomPopUpView *popUpView = [[WGBCustomPopUpView alloc] init];
 	self.popUpView = popUpView;
+	// 可视作蒙版
+	UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	bgView.userInteractionEnabled = YES;
+	bgView.backgroundColor = [UIColor clearColor] ;
+
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-	button.frame = CGRectMake(0, 0, 300, 300);
-	button.backgroundColor = [UIColor magentaColor];
+	button.frame = CGRectMake(0,0, 300, 300);
+	button.center = CGPointMake(bgView.frame.size.width/2, bgView.frame.size.height/2);
+	button.backgroundColor = [UIColor colorWithRed:arc4random()%256/255.0f green:arc4random()%256/255.0f  blue:arc4random()%256/255.0f alpha:1.0f];
 	[button setTitle:@"你放马过来啊!!!" forState:UIControlStateNormal];
 	[button addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
+	[bgView addSubview: button];
+
 		///利用runtime关联一个block
 	dispatch_block_t block = ^{
 		[popUpView dismiss];
 	};
 	objc_setAssociatedObject(self, @"BlockKey", block, OBJC_ASSOCIATION_COPY_NONATOMIC);
-	popUpView.contentView = button;
-	popUpView.animationType = arc4random()%5;
-	popUpView.touchDismiss = YES;
+
+	popUpView.contentView = bgView;
+	popUpView.animationType = WGBAlertAnimationTypeCenter;
+	popUpView.touchDismiss = NO;
 	[popUpView show];
 }
 

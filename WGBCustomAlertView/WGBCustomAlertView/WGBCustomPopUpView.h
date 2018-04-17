@@ -13,7 +13,8 @@ typedef NS_ENUM(NSInteger,WGBAlertAnimationType) {
 	WGBAlertAnimationTypeUp ,//从顶部弹出
 	WGBAlertAnimationTypeBottom,//从底部弹出
 	WGBAlertAnimationTypeLeft,//从左边弹出
-	WGBAlertAnimationTypeRight//从右边弹出
+	WGBAlertAnimationTypeRight,//从右边弹出
+	WGBAlertAnimationTypeAlert //类似系统弹出窗动画
 };
 
 @interface WGBCustomPopUpView : UIView

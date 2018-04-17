@@ -202,6 +202,11 @@
 			self.contentView.frame = CGRectMake(viewX, viewY, viewW, viewH);
 		}
 			break;
+			case WGBAlertAnimationTypeAlert:{
+				viewY = kHeight;
+				self.contentView.frame = CGRectMake(viewX, viewY, viewW , viewH);
+			}
+			break;
 		default:{
 			self.contentView.center = center;
 		}
@@ -265,6 +270,23 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 			}];
 		}
 			break;
+			case WGBAlertAnimationTypeAlert:{
+				UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+				window.userInteractionEnabled = NO;
+				self.contentView.alpha = 0;
+				self.contentView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+				[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
+					CGRect frame = self.contentView.frame;
+					frame.origin.y -= kHeight;
+					self.contentView.frame = frame;
+					self.contentView.alpha = 1.0;
+					self.contentView.transform = CGAffineTransformIdentity;
+				} completion:^(BOOL finished) {
+					UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+					window.userInteractionEnabled = YES;
+				}];
+			}
+			break;
 		default:{
 			[self showAlertCenterScaleAnimation];
 		}
@@ -312,6 +334,23 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 				[self removeFromSuperview];
 			}];
 		}
+			break;
+			case WGBAlertAnimationTypeAlert:{
+				UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+				window.userInteractionEnabled = NO;
+				[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
+					CGRect frame = self.contentView.frame;
+					frame.origin.y += kHeight;
+					self.contentView.frame = frame;
+					self.contentView.transform = CGAffineTransformMakeScale(0.8, 0.8);
+					self.contentView.alpha = 0 ;
+					self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent: 0];
+				} completion:^(BOOL finished) {
+					UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+					window.userInteractionEnabled = YES;
+					[self removeFromSuperview];
+				}];
+			}
 			break;
 		default:{
 			[self dismissAlertCenterScaleAnimation];
