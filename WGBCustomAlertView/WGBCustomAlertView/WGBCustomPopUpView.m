@@ -140,6 +140,7 @@
 	return self;
 }
 
+
 /// 添加内容视图
 - (void)setContentView:(UIView *)contentView{
 	_contentView = contentView;
@@ -369,3 +370,67 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 @end
 
 
+@interface WGBAlertViewController()
+/*!
+ @property
+ @abstract 展示内容控制器
+ */
+@property (nonatomic,strong,readwrite) UIViewController *contentViewController;
+
+@end
+
+@implementation WGBAlertViewController
+
+- (instancetype)initWithContentViewController:(UIViewController *)contentViewController{
+    self = [super init];
+    if (self) {
+        self.contentViewController = contentViewController;
+    }
+    return self;
+}
+
+- (void)setContentViewController:(UIViewController *)contentViewController{
+    _contentViewController = contentViewController;
+    _contentViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
+}
+
+- (void)setIsMask:(BOOL)isMask{
+    _isMask = isMask;
+    if (_isMask) {
+        self.contentViewController.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45];
+    }
+}
+
+- (void)show{
+    [self isMask];
+    [[self topViewController] presentViewController: self.contentViewController animated:YES completion:^{
+        
+    }];
+}
+
+- (void)dismiss{
+    [self.contentViewController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+- (UIViewController *)topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+}
+
+@end

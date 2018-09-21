@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA55EC2121548A4F0002AEE3 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA55EC2021548A4F0002AEE3 /* SecondViewController.m */; };
 		CABD91C22009E91300551B70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CABD91C12009E91300551B70 /* AppDelegate.m */; };
 		CABD91C52009E91300551B70 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CABD91C42009E91300551B70 /* ViewController.m */; };
 		CABD91C82009E91300551B70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CABD91C62009E91300551B70 /* Main.storyboard */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA55EC1F21548A4F0002AEE3 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		CA55EC2021548A4F0002AEE3 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		CABD91BD2009E91300551B70 /* WGBCustomAlertView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WGBCustomAlertView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABD91C02009E91300551B70 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CABD91C12009E91300551B70 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				CABD91C12009E91300551B70 /* AppDelegate.m */,
 				CABD91C32009E91300551B70 /* ViewController.h */,
 				CABD91C42009E91300551B70 /* ViewController.m */,
+				CA55EC1F21548A4F0002AEE3 /* SecondViewController.h */,
+				CA55EC2021548A4F0002AEE3 /* SecondViewController.m */,
 				CABD91C62009E91300551B70 /* Main.storyboard */,
 				CABD91C92009E91300551B70 /* Assets.xcassets */,
 				CABD91CB2009E91300551B70 /* LaunchScreen.storyboard */,
@@ -147,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA55EC2121548A4F0002AEE3 /* SecondViewController.m in Sources */,
 				CABD91DB2009F52500551B70 /* WGBCustomPopUpView.m in Sources */,
 				CABD91C52009E91300551B70 /* ViewController.m in Sources */,
 				CABD91D02009E91300551B70 /* main.m in Sources */,

@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WGBCustomPopUpView.h"
 #import <objc/runtime.h>
+#import "SecondViewController.h"
 
 @interface ViewController ()
 @property (strong,nonatomic) WGBCustomPopUpView *popUpView ;
@@ -18,7 +19,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.view.backgroundColor = [UIColor orangeColor];
+//    self.view.backgroundColor = [UIColor orangeColor];
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	button.frame = CGRectMake(100, 100, 100, 30);
 	[button setTitle:@"点我啊!!!" forState:UIControlStateNormal];
@@ -26,16 +27,32 @@
 	[self.view addSubview: button];
 	[button addTarget:self action:@selector(testDemo) forControlEvents:UIControlEventTouchUpInside];
 }
+
+
 - (void)viewDidLayoutSubviews{
 	[super viewDidLayoutSubviews];
 }
 
 - (void)testDemo{
-	[self showDemo];
+//    [self showDemo];
+    [self showContentVC];
 		//	[self wgbStyle_alertWithTitle:@"提示" cancelButtonTitle:@"取消" confirmButtonTitle:@"确定" cancelAction:^{
 		//	} comfirmAction:^{
 		//	}];
 }
+
+
+- (void)showContentVC{
+    // 把戏都交给secondVC唱了  alertVC只负责弹出来和收回去  职责分明
+    SecondViewController *secondVC = [[SecondViewController alloc] init];
+    WGBAlertViewController *alertVC = [[WGBAlertViewController alloc] initWithContentViewController: secondVC];
+    alertVC.isMask = YES;
+    [alertVC show];
+    [secondVC setBlock:^{
+        [alertVC dismiss];
+    }];
+}
+
 
 #pragma mark- Demo
 - (void)showDemo{
