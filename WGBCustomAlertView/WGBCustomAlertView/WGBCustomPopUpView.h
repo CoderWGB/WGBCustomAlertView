@@ -33,6 +33,8 @@ typedef NS_ENUM(NSInteger,WGBAlertAnimationType) {
  @abstract 是否点击背景移除 默认否 the background layer dismiss. Default is NO
  */
 @property (assign,nonatomic) BOOL touchDismiss;
+/**  蒙层的透明度 默认 0.45  maskLayer's backgroundColor alpha, default is 0.45*/
+@property (nonatomic,assign) CGFloat maskLayerAlpha;
 
 /*!
  @method 展示到window上

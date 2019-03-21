@@ -135,7 +135,8 @@
 	self = [super initWithFrame:frame];
 	if (self) {
 		/// 初始化配置
-		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45];
+        self.maskLayerAlpha = 0.45;
+		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.maskLayerAlpha];
 	}
 	return self;
 }
@@ -363,7 +364,7 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 /// 加蒙版视图动画
 - (void)showBackground{
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.45];
+	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.maskLayerAlpha];
 	[window addSubview: self];
 }
 
