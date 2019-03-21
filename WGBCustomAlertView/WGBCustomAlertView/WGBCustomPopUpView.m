@@ -135,8 +135,8 @@
 	self = [super initWithFrame:frame];
 	if (self) {
 		/// 初始化配置
-        self.maskLayerAlpha = 0.45;
-		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.maskLayerAlpha];
+        self.coverMaskAlpha = 0.45;
+		self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.coverMaskAlpha];
 	}
 	return self;
 }
@@ -279,7 +279,7 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 				self.contentView.transform = CGAffineTransformMakeScale(1.2, 1.2);
 				[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
 					CGRect frame = self.contentView.frame;
-					frame.origin.y -= kHeight;
+					frame.origin.y -= kHeight/2.0;
 					self.contentView.frame = frame;
 					self.contentView.alpha = 1.0;
 					self.contentView.transform = CGAffineTransformIdentity;
@@ -342,7 +342,7 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 				window.userInteractionEnabled = NO;
 				[UIView animateWithDuration:kWGBAlertAnimationDuration animations:^{
 					CGRect frame = self.contentView.frame;
-					frame.origin.y += kHeight;
+					frame.origin.y += kHeight/2.0;
 					self.contentView.frame = frame;
 					self.contentView.transform = CGAffineTransformMakeScale(0.8, 0.8);
 					self.contentView.alpha = 0 ;
@@ -364,7 +364,7 @@ __block	CGPoint center =  CGPointMake(kWidth/2.0, kHeight/2.0);
 /// 加蒙版视图动画
 - (void)showBackground{
 	UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.maskLayerAlpha];
+	self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:self.coverMaskAlpha];
 	[window addSubview: self];
 }
 

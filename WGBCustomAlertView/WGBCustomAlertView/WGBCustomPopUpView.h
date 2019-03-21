@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger,WGBAlertAnimationType) {
  */
 @property (assign,nonatomic) BOOL touchDismiss;
 /**  蒙层的透明度 默认 0.45  maskLayer's backgroundColor alpha, default is 0.45*/
-@property (nonatomic,assign) CGFloat maskLayerAlpha;
+@property (nonatomic,assign) CGFloat coverMaskAlpha;
 
 /*!
  @method 展示到window上
