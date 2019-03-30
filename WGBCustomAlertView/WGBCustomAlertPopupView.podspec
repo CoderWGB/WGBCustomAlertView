@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "WGBCustomAlertPopupView"
-  s.version      = "1.0.3"
+  s.version      = "1.0.5"
   s.summary      = "高度定制化的自定义弹窗小组件,提供上下左右中心各种位置的弹窗动画,能够应对基本的业务开发"
 
   s.description  = <<-DESC 
